@@ -11,6 +11,7 @@ let usedLetters = [];
 function reset() {
     usedLetters = [];
     letterElem.innerHTML = 'Naciśnij "Wylosuj"';
+    usedLettersElem.innerHTML = 'Brak';
 }
 
 function getUnusedLetter() {
@@ -30,7 +31,15 @@ function getUnusedLetter() {
 }
 
 function displayRandomLetter() {
-    
+    const letter = getUnusedLetter();
+
+    if (letter) {
+        letterElem.innerHTML = letter;
+        usedLettersElem.innerHTML = usedLetters.join(', ');
+    }
+    else {
+        letterElem.innerHTML = 'Wykorzystano cały alfabet!';
+    }
 }
 
 reset();
